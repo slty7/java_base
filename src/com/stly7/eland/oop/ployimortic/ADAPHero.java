@@ -4,7 +4,7 @@ public class ADAPHero extends Hero implements Mortal {
 
 	@Override
 	public void die() {
-		System.out.println("adapæ­»äº†");
+		System.out.println("adapËÀÁË");
 	}
 
 }

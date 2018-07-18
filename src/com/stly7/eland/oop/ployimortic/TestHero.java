@@ -18,5 +18,11 @@ public class TestHero {
 		g.kill(ad);
 		g.kill(ap);
 		g.kill(adap);
+		
+		
+		//添加这个不需要进行修改后面的实现,不用重写.测试Martal接口
+		ad.revive();
+		ap.revive();
+		adap.revive();
 	}
 }

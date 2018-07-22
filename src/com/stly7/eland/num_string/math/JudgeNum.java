@@ -6,14 +6,24 @@ package com.stly7.eland.num_string.math;
  *
  */
 public class JudgeNum {
-	
 	public static void main(String[] args) {
-		int count = 3;
-		//知道1,2,3是素数
-		for (int i = 4; i < 10000000; i++) {
+		int count = 0;
+		
+		for (int num = 2; num < 101; num++) {
+			if (num < 2) {
+				break;
+			}
 			
+			for (int i = 2; i <= num / 2; i++) {
+				if ( num % i == 0) {
+					count ++;
+					break;
+				}
+				
+			}
 		}
 		
-		System.out.println("1-10000000所有的素数有" + count + "个");
+		System.out.println(100 - count + 1);
+		
 	}
 }

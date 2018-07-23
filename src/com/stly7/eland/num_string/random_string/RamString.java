@@ -13,42 +13,30 @@ import java.util.Random;
  *
  */
 public class RamString {
+	Random random = new Random();
+	char[] cs = new char[5];
+	
+	//获得一个字符串
+	public String getChar() {
+		for (int i = 0; i < cs.length; i++) {
+			//这里随机是哪一个从0开始到第三个(2),都是在这3个条件范围内的随机切换
+			int y = random.nextInt(3) + 0;
+            if (y == 0) {
+                cs[i] = (char)(random.nextInt(9)+49);
+            }else if (y==1) {
+                cs[i] = (char)(random.nextInt(25)+66);
+            }else {
+                cs[i] = (char)(random.nextInt(25)+98);
+            }
+		}
+		return new String(cs);
+	}
 	
 	public static void main(String[] args) {
-		Random random = new Random();
-		char[] cs = new char[5];
-		//用于记住下标
-		int index = 0;
-		//设定一个死循环的出口条件
-		boolean flag = true;
-		
-		//死循环
-		while(flag) {
-			//首先循环第一个找到了就跳出循环,并且记住下标
-			for (int i = index; i < cs.length; i++) {
-				char num = (char) (random.nextInt(73) + 48);
-				
-				//判断通过这个手段就能够知道字符 a-z A-Z 0-9 所对应的数字的区间了
-				if (num >= '0' && num <= '9' ||  num >= 'A' && num <= 'Z' || num >= 'a' && num <= 'z') {
-					cs[i] = num;
-					
-					//查看存进去的数据
-					System.out.println("---->" + cs[i] + "  " + i);
-					//这里一定是++,下一次开始的下标一定是本次结束后的下一个下标
-					index = i ++;
-					break;
-				}
-			}
-			
-			//出口
-			if (index == 4) {
-				flag = false;
-			}
-		}
-		
-		//打印
-		for (int i = 0; i < cs.length; i++) {
-			System.out.print(cs[i]);
-		}
+		RamString ramString = new RamString();
+		//这样的随机数更加容易
+		String string = ramString.getChar();
+		System.out.println(string);
 	}
+	
 }

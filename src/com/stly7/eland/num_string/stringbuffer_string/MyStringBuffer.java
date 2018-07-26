@@ -28,16 +28,23 @@ public class MyStringBuffer implements IStringBuffer {
 //		}
 //		length = value.length;
 		
-		this();
+		this();//这里的作用一定有一个初始化值value值的产生
 		//如果是空直接返回
 		if (null == str) {
 			return;
 		}
-		//如果不是空,但是长度超出16了,要重新创建空间
+		//如果不是空,但是长度超出16了,要重新创建空间就根据字符串的长度,(俗称扩容)
 		if(capacity < str.length()) {
-			capacity += value.length;
-			value = new char[capacity];
+			int i = str.length() / capacity;
+			if (str.length() % capacity != 0) {
+				capacity *= i + 1;
+				value = new char[capacity];
+			}else {
+				capacity *= i;
+				value = new char[capacity];
+			}
 		}
+		
 		//如果够了或者相等了则用System.arraycopy(str.toCharArray(), 0, value, 0, str.length())
 		if (capacity >= str.length()) {
 			//这样又可以吧value覆盖
@@ -67,6 +74,18 @@ public class MyStringBuffer implements IStringBuffer {
 	@Override
 	public void insert(int pos, String b) {
 		// TODO Auto-generated method stub
+		//首先判断边界
+		if (pos >  length) {
+			return;
+		}
+		if (pos < 0) {
+			return;
+		}
+		if (null == b) {
+			return;
+		}
+		//扩容
+		
 		
 	}
 
@@ -99,4 +118,12 @@ public class MyStringBuffer implements IStringBuffer {
 		return length;
 	}
 
+	//toString的长度是str的长度的,然后通过数组进行底层进行copy速度快
+	public String toString() {
+		char[] realValue = new char[length];
+		System.arraycopy(value, 0, realValue, 0, length);
+		
+		return new String(realValue);
+	}
+	
 }

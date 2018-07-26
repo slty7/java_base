@@ -57,25 +57,27 @@ public class MyStringBuffer implements IStringBuffer {
 	@Override
 	public void append(String str) {
 		// TODO Auto-generated method stub
+		insert(length, str);
 	}
 
 	@Override
 	public void append(char c) {
 		// TODO Auto-generated method stub
-		
+		insert(length, String.valueOf(c));
 	}
 
+	//无需重新开发,只要调用即可
 	@Override
 	public void insert(int pos, char b) {
 		// TODO Auto-generated method stub
-		
+		insert(pos, String.valueOf(b));
 	}
 
 	@Override
 	public void insert(int pos, String b) {
 		// TODO Auto-generated method stub
 		//首先判断边界
-		if (pos >  length) {
+		if (pos > length) {
 			return;
 		}
 		if (pos < 0) {
@@ -85,6 +87,33 @@ public class MyStringBuffer implements IStringBuffer {
 			return;
 		}
 		//扩容
+		if(length + b.length() > capacity) {
+			int i = length + b.length() / capacity;
+			
+			//快速获取一个估算值
+			if (length + b.length() % capacity != 0) {
+				capacity *= i + 1;
+				value = new char[capacity];
+			}else {
+				capacity *= i;
+				value = new char[capacity];
+			}
+			//通过拷贝方式进行获得精确值
+			System.arraycopy(value, 0, value, 0, length + b.length());
+			
+			char[] cs = b.toCharArray();
+			
+			//先吧已经存在的数据往后移,这里的pos是指 pos - end这一段数组,
+			//然后放到 在pos增加cs.length这里开始到最后长度是value的长度 减起点的长度
+			//这样的value是会自增的,无需管理长度
+			System.arraycopy(value, pos, value, pos + cs.length, length - pos);
+			
+			//在把要拷贝的数据放到重甲空出来的那段
+			System.arraycopy(cs, 0, value, pos, cs.length);;
+			
+			length += cs.length;
+		}
+		
 		
 		
 	}
@@ -92,13 +121,30 @@ public class MyStringBuffer implements IStringBuffer {
 	@Override
 	public void delete(int start) {
 		// TODO Auto-generated method stub
-		
+		delete(start, length);
 	}
 
 	@Override
 	public void delete(int start, int end) {
 		// TODO Auto-generated method stub
-		
+		//边界条件判断
+        if(start<0)
+            return;
+         
+        if(start>length)
+            return;
+         
+        if(end<0)
+            return;
+         
+        if(end>length)
+            return;
+         
+        if(start>=end)
+            return;
+        
+        //最后一段(end --> length) 添加到 从(start开始删掉的这里),最后一个参数其实就是第一个end -->length的长度 
+        System.arraycopy(value, end, value, start, length - end);;
 	}
 
 	@Override

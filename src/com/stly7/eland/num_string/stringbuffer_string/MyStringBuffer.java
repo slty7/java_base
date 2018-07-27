@@ -88,10 +88,10 @@ public class MyStringBuffer implements IStringBuffer {
 		}
 		//扩容
 		if(length + b.length() > capacity) {
-			int i = length + b.length() / capacity;
+			int i = (length + b.length()) / capacity;
 			
 			//快速获取一个估算值
-			if (length + b.length() % capacity != 0) {
+			if ((length + b.length()) % capacity != 0) {
 				capacity *= i + 1;
 				value = new char[capacity];
 			}else {

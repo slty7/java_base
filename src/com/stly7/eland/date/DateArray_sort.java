@@ -14,7 +14,6 @@ import java.util.Date;
  */
 public class DateArray_sort {
 	int length = 9;
-	
 	static Date[] arr_date = new Date[9];
 	//用于存储转换
 	static String[] strs = new String[9];
@@ -22,7 +21,6 @@ public class DateArray_sort {
 	static Date[] new_arr_date = new Date[9];
 	//格式化Date yyyy-MM-dd HH:mm:ss
 	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	
 	
 	//主程序
 	public static void main(String[] args) throws Exception {
@@ -40,7 +38,7 @@ public class DateArray_sort {
 			//重新创建一个方便剪切的格式
 			System.out.println("生成--->" + simpleDateFormat.format(arr_date[i]));
 		}
-		System.out.println("=================");
+		System.out.println("=======================================");
 		
 		// 生成参数
 		for (int i = 0; i < strs.length; i++) {
@@ -49,7 +47,6 @@ public class DateArray_sort {
 		}
 		// 排序
 		Arrays.sort(strs);
-		
 		for (int i = 0; i < strs.length; i++) {
 			for (int j = 0; j < arr_date.length; j++) {
 				//这里一定要用equles,相同的就直接复制到新的数组中
@@ -63,12 +60,10 @@ public class DateArray_sort {
 		for (Date date : new_arr_date) {
 			System.out.println(simpleDateFormat.format(date));
 		}
-		
 	}
 	
 	// 生成随机日期
 	public Date RandomDate() throws Exception {
-		
 		String end_str = "1999-12-31 23:59:59";
 		Date end_date = simpleDateFormat.parse(end_str);
 		long r = end_date.getTime() - new Date(0).getTime();

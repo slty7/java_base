@@ -80,7 +80,7 @@ public class SplitFile {
             if (f.length() > 100*1024) {
             	
             	//最后一次读取就是 f.leng() % (100*1024)
-            	while((size = fis.read(b,0,b.length)) != -1){
+            	while((size = fis.read(b, 0, b.length)) != -1){
                     String str = "C:/Users/Administrator/Desktop/1/TeamViewer.exe-";
                     str += count;
                     fos = new FileOutputStream(str);

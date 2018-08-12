@@ -3,9 +3,13 @@ package com.stly7.eland.io;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+/**
+ * 找出 E5 B1 8C 这3个十六进制对应UTF-8编码的汉字
+ * @author Administrator
+ *
+ */
 
-
-public class ISOToGBK {
+public class ISOToUTF8 {
 	
 	static String path = "D:/in_out.txt";
 	
@@ -24,8 +28,17 @@ public class ISOToGBK {
 			char[] cs = new char[(int) file.length()];
 			fr.read(cs);
 			String str = new String(cs);
-			String str1 =  new String(str.getBytes(), "utf-8");
-			System.out.println(str1);
+			//通过剪切数组得到两个一组的字符串
+			//通过字符串转成16位的数字,并且强转成为byte类型的数据
+			//最后通过byte类型数据读出用utf-8显示出来
+			String[] split = str.split(" ");
+			byte[] buffer = new byte[split.length];
+			for (int i = 0; i < buffer.length; i++) {
+				buffer[i] = (byte) Integer.parseInt(split[i], 16);
+			}
+			
+			System.out.println(new String(buffer, "utf-8"));;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

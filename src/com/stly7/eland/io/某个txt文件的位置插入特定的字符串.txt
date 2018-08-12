@@ -1,0 +1,17 @@
+实现思路：就是重新定义一个文件，之后将之前的文件内容读取出来指定未指定的数据，之后再插入某些数据。
+可以通过BufferedReader 流的形式进行流缓存，之后通过readLine方法获取到缓存的内容。
+BufferedReader bre = null;
+OutputStreamWriter pw = null;//定义一个流
+try {
+String file = "D:/test/test.xml";
+bre = new BufferedReader(new FileReader(file));//此时获取到的bre就是整个文件的缓存流
+pw = new OutputStreamWriter(new FileOutputStream(“D:/New.xml”),"GBK");//确认流的输出文件和编码格式，此过程创建了“test.txt”实例
+while ((str = bre.readLine())!= null) // 判断最后一行不存在，为空结束循环
+{
+if(str.indexOf("<end>")){//判断如果满足xml的条件就插入字符串
+pw.write(str);//将要写入文件的内容，可以多次write
+pw.write(“插入的内容”);//将要写入文件的内容，可以多次write
+}
+}；
+bre.close()；
+pw.close();//关闭流

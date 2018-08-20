@@ -30,7 +30,7 @@ public class SerializableArray {
 			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
 		) {
 			for (int i = 0; i < heros.length; i++) {
-				heros[i] = new Hero("Ó¢ÐÛ" + i, 10 + i);
+				heros[i] = new Hero("¹·Å£" + i, 10 + i);
 			}
 			oos.writeObject(heros);
 		} catch (Exception e) {
@@ -48,7 +48,7 @@ public class SerializableArray {
 			) {
 				heros = (Hero[])ois.readObject();
 				for (Hero hero : heros) {
-					System.out.println(hero.name + ": -->" + hero.hp);
+					System.out.println(hero.name + ": --> ÑªÁ¿: " + hero.hp);
 				}
 		} catch (Exception e) {
 			// TODO: handle exception

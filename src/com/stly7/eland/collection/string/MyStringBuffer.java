@@ -6,9 +6,6 @@ import java.util.List;
 import com.stly7.eland.collection.intface.IStringBuffer;
 /**
  * 做一个一样的MyStringBuffer练习，但是不使用字符数组，而是使用ArrayList来实现
- * 
- * 自定义bufferString要素主要是实现最复杂的插入和删除
- * 添加是变相的插入,
  * @author Administrator
  *
  */
@@ -24,9 +21,7 @@ public class MyStringBuffer implements IStringBuffer {
 	//有参构造
 	public MyStringBuffer(String str) {
 		this();
-		//value.add(str);
-		//此处不能简单的用str来返回数组了,因为直接使用集合的话就不适用char数组了
-		//此时我们将使用
+		//直接调用list的特性
 		append(str);
 	}
 	
@@ -45,43 +40,59 @@ public class MyStringBuffer implements IStringBuffer {
 	@Override
 	public void insert(int pos, char b) {
 		// TODO Auto-generated method stub
-		//反正插入的都是字符串
-		value.add(pos, b);
+		insert(pos, String.valueOf(b));
 	}
 
 	@Override
 	public void insert(int pos, String b) {
 		// TODO Auto-generated method stub
-		//索引不能越界
-		if (pos < 0 || pos > value.size()) {
-			throw new RuntimeException("角标越界");
+		 if (pos < 0 || pos > value.size()) {
+			 throw new RuntimeException("角标越界");
+		 }
+        if (b.equals("")) {
+        	throw new IllegalArgumentException("请勿输入空字符串");
+        }
+        
+        /*//先重pos起点移
+        //插入的(insert前)后半段长度 = (insert前)总长度-(pos - 1)
+        for (int i = pos + b.length(); i < value.size() + b.length(); i++) {
+			//添加的前的位置
+        	char begin = (char) value.get(pos ++);
+        	value.add(i, begin);
 		}
-		//传入值不能
-		if (b.equals("")) {
-			throw new IllegalArgumentException("请勿输入空字符串");
+        
+        //auto用于去b里面的char值
+        int auto = 0;
+        for (int i = pos; i < pos + b.length(); i++) {
+            value.add(i, b.charAt(auto ++));
+        }*/
+        
+        //上面的方法太麻烦了
+        //根据list的特性,在pos位置反过来原索引添加
+        for (int i = b.length() - 1; i >= 0 ; i--) {
+        	value.add(pos, b.charAt(i));
 		}
-		//通过索引来存储这个字符
-		for (int i = pos; i < b.length(); i++) {
-			//都是操作字符串
-			value.add(i, b.charAt(i));
-		}
-		
 	}
 
 	@Override
 	public void delete(int start) {
 		// TODO Auto-generated method stub
-		delete(start, value.size() - 1);
+		delete(start, value.size());
 	}
 
 	@Override
 	public void delete(int start, int end) {
 		// TODO Auto-generated method stub
-		if (start < end && start > 0 || end > 0) {
-			for (int i = start; i < end; i++) {
-				value.remove(i);
-			}
+		// TODO Auto-generated method stub
+		if (start < 0 || start > value.size()) {
+			 throw new RuntimeException("角标越界");
 		}
+		//同样根据list的特性
+		for (int i = start; i < end; i++) {
+			//一直删掉开始的的位置次数够了就删够了
+			value.remove(start);
+		}
+        
 	}
 
 	@Override

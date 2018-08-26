@@ -1,4 +1,4 @@
-package com.stly7.eland.collection.intface;
+package com.stly7.eland.collection.arrayList.interface_;
 
 public interface IStringBuffer {
 	public void append(String str); //×·¼Ó×Ö·û´®

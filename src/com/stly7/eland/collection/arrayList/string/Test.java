@@ -1,4 +1,4 @@
-package com.stly7.eland.collection.string;
+package com.stly7.eland.collection.arrayList.string;
 
 public class Test {
 	public static void main(String[] args) {

@@ -1,9 +1,9 @@
-package com.stly7.eland.collection;
+package com.stly7.eland.collection.arrayList;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.stly7.eland.collection.bean.Hero;
+import com.stly7.eland.collection.arrayList.bean.Hero;
 
 /**
  * 如果就是要判断集合里是否存在一个 name等于 "hero 1"的对象，应该怎么做？

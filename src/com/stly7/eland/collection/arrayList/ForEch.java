@@ -1,10 +1,10 @@
-package com.stly7.eland.collection;
+package com.stly7.eland.collection.arrayList;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.stly7.eland.collection.genericheros.Hero;
+import com.stly7.eland.collection.arrayList.genericheros.Hero;
 
 public class ForEch {
 	

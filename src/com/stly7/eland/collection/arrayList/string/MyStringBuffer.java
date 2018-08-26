@@ -1,9 +1,9 @@
-package com.stly7.eland.collection.string;
+package com.stly7.eland.collection.arrayList.string;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.stly7.eland.collection.intface.IStringBuffer;
+import com.stly7.eland.collection.arrayList.interface_.IStringBuffer;
 /**
  * 做一个一样的MyStringBuffer练习，但是不使用字符数组，而是使用ArrayList来实现
  * @author Administrator

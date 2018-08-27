@@ -60,14 +60,16 @@ public class TestBubbleSort {
 	
 	//冒泡排序
 	private void bubbleSort() {
+		int temp;
 		//冒泡排序是相邻两个比较
-		for (int i = 0; i < arr.length - 1; i++) {
-			for (int j = i + 1; j < arr.length; j++) {
-				if (arr[i] < arr[j]) {
-					sawp = arr[i];
-					arr[i] = arr[j];
-					arr[j] = sawp;
-				}
+		for (int i = 0; i < arr.length; i++) {
+			//这样就是两个相邻的数进行 这里的arr.length - i - 1是提升效率的作用
+			for (int j = 0; j < arr.length - i -1; j++) {
+				if(arr[i]>arr[i+1]){  
+                    temp = arr[i];
+                    arr[i] = arr[i+1];
+                    arr[i+1] = temp;
+                }
 			}
 		}
 		

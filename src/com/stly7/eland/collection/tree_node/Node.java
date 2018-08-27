@@ -26,7 +26,7 @@ public class Node {
     // 值
     public Object value;
     
- // 插入 数据
+    // 插入 数据
     public void add(Object v) {
         // 如果当前节点没有值，就把数据放在当前节点上
         if (null == value){
@@ -75,16 +75,4 @@ public class Node {
         return list;
     }
   
-    public static void main(String[] args) {
-  
-        int randoms[] = new int[] { 67, 7, 30, 73, 10, 0, 78, 81, 10, 74 };
-  
-        Node roots = new Node();
-        for (int number : randoms) {
-            roots.add(number);
-        }
-  
-        System.out.println(roots.values());
-  
-    }
 } 

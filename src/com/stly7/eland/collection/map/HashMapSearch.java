@@ -1,6 +1,7 @@
 package com.stly7.eland.collection.map;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -18,39 +19,41 @@ public class HashMapSearch {
 	
 	public static void main(String[] args) {
 		List<Hero> list = new ArrayList<>();
-		List<Hero> list1;
-		List<Hero> list2;
 		HashMapSearch search = new HashMapSearch();
-		list1 = search.add(list);
-		list2 = list1;
-		
+		for (int i = 0; i < 3000000; i++) {
+			list.add(new Hero("hero-" + new Random().nextInt(10000), i));
+		}
 		long start1 = System.currentTimeMillis();
-		search.forEch(list1);
+		search.forEch(list);
 		long end1 = System.currentTimeMillis();
 		System.out.println(end1 - start1);
-	}
-	
-	//添加随机数
-	public List<Hero> add(List<Hero> list) {
-		Random random = new Random();
-		for (int i = 0; i < 3000000; i++) {
-			list.add(new Hero("hero" + random.nextInt(10000), i));
-		}
-		return list;
+		
+		//名字作为key
+        //名字相同的hero，放在一个List中，作为value
+		HashMap<String,List<Hero>> heroMap =new HashMap();
+        for (Hero h : list) {
+            List<Hero> reustList = heroMap.get( h.getName());
+            if(list==null){
+            	reustList = new ArrayList<>();
+                heroMap.put(h.getName(), reustList);
+            }
+            reustList.add(h);
+        }
+		
 	}
 	
 	//用for循环找出来
 	public void forEch(List<Hero> list) {
 		// TODO Auto-generated method stub
-		int count = 0;
-		for (int i = 0; i < list.size(); i++) {
-			if ("hero-5555".equals(list.get(i).getName())) {
-				System.out.println(list.get(i).getName());
-				count ++;
+		List<Hero> heroList = new ArrayList<>();
+		for (Hero hero : list) {
+			if ("hero-5555".equals(hero.getName())) {
+				heroList.add(hero);
 			}
 		}
-		System.out.println(count);
+		System.err.println(heroList.size());
 	}
+	
 	
 	
 }

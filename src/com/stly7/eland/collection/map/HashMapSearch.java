@@ -13,6 +13,7 @@ import com.stly7.eland.collection.bean.Hero;
  * hero-9365
  * @author Administrator
  *
+ * 意思是用压入hero值到List中,
  */
 public class HashMapSearch {
 	
@@ -28,17 +29,22 @@ public class HashMapSearch {
 		long end1 = System.currentTimeMillis();
 		System.out.println(end1 - start1);
 		
+		
 		//名字作为key
         //名字相同的hero，放在一个List中，作为value
 		HashMap<String,List<Hero>> heroMap =new HashMap();
         for (Hero h : list) {
-            List<Hero> reustList = heroMap.get( h.getName());
-            if(list==null){
-            	reustList = new ArrayList<>();
-                heroMap.put(h.getName(), reustList);
+            List<Hero> resultList = heroMap.get( h.getName());
+            if(resultList == null){
+            	resultList = new ArrayList<>();
+                heroMap.put(h.getName(), resultList);
             }
-            reustList.add(h);
+            resultList.add(h);
         }
+        long start2 = System.currentTimeMillis();
+        search.mapGetList(heroMap);
+        long end2 = System.currentTimeMillis();
+        System.out.println(end2 - start2);
 		
 	}
 	
@@ -51,9 +57,15 @@ public class HashMapSearch {
 				heroList.add(hero);
 			}
 		}
-		System.err.println(heroList.size());
+		System.out.println(heroList.size());
 	}
 	
-	
+	//直接使用hashMap进行分
+	public List<Hero> mapGetList(HashMap<String,List<Hero>> heroMap) {
+		
+		List<Hero> result = heroMap.get("hero-5555");
+		System.out.println(result.size());
+		return result;
+	}
 	
 }

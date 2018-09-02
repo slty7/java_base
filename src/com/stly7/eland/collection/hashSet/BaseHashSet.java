@@ -11,8 +11,7 @@ import java.util.Set;
  * @param <E>
  */
 public class BaseHashSet<E> extends AbstractSet<E>
-implements Set<E>, Cloneable, java.io.Serializable
-{
+implements Set<E>, Cloneable, java.io.Serializable{
 //HashSet里封装了一个HashMap
 private  HashMap<E,Object> map;
 

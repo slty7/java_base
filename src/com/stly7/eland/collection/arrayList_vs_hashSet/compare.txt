@@ -1,0 +1,22 @@
+
+
+不同点1:
+
+	ArrayList: 有顺序
+	HashSet: 无顺序
+	HashSet的具体顺序，既不是按照插入顺序，也不是按照hashcode的顺序。关于hashcode有专门的章节讲解: hashcode 原理。
+
+
+不同点2:
+	List中的数据可以重复
+		Set中的数据不能够重复
+		重复判断标准是:
+		首先看hashcode是否相同
+		如果hashcode不同，则认为是不同数据
+		如果hashcode相同，再比较equals，如果equals相同，则是相同数据，否则是不同数据
+		更多关系hashcode，请参考hashcode原理
+
+
+
+底层实现不同:
+	arrayList通过对象的构造实现了固定的长度,再通过泛型添加了数据进行增删改查还有返回长度

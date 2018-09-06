@@ -50,12 +50,6 @@ public class MyHashMap implements IHashMap {
             list.add(entry);
         }
         
-        // 如果没有已经存在的键值对，则创建新的键值对
-        if (!found) {
-            Entry entry = new Entry(key, object);
-            list.add(entry);
-        }
-        
 	}
 
 	@Override

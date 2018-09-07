@@ -1,4 +1,4 @@
-package com.stly7.eland.collection.compare;
+package com.stly7.eland.collection.compara.comparable;
 
 public class Hero implements Comparable<Hero>{
     public String name;

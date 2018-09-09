@@ -1,4 +1,4 @@
-package com.stly7.eland.lambda.ref;
+package com.stly7.eland.lambda.comparator_static;
 
 public class Hero {
 	public String name;
@@ -23,11 +23,5 @@ public class Hero {
         this.name = name;
         this.hp = hp;
         this.damage = damage;
-    }
-    
-    
-    // 引用容器中的对象的方法
-    public boolean matched(){
-	   return this.hp>100 && this.damage<50;
     }
 }

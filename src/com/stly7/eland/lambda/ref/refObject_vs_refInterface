@@ -1,0 +1,2 @@
+1.使用lambda的时候传递类对象要用new Object().method;
+2.使用lambda的时候传递接口对象可以可以直接写().method

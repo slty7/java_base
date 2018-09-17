@@ -1,4 +1,4 @@
-package com.stly7.eland.multiplethread;
+package com.stly7.eland.multiplethread.threadStart;
 
 public class TestThread1 {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.stly7.eland.multiplethread;
+package com.stly7.eland.multiplethread.threadStart;
 
 public class Hero {
 	public String name;

@@ -2,6 +2,7 @@ package com.stly7.eland.collection.arrayList.string;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import com.stly7.eland.collection.arrayList.interface_.IStringBuffer;
 /**

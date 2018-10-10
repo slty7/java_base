@@ -1,0 +1,12 @@
+synchronzied:
+	属于自动结束synchronzied块的,设计时候需要考虑周全避免设计死锁现象
+
+
+lock:
+	属于手动释放lock块,一般都是需要手动解锁,设计不好情况下也是出现死锁现象的
+	
+	使用synchronized方式进行线程交互，用到的是同步对象的wait,notify和notifyAll方法
+Lock也提供了类似的解决办法，首先通过lock对象得到一个Condition对象，
+然后分别调用这个Condition对象的：await, signal,signalAll 方法
+
+	
